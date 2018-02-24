@@ -1,0 +1,26 @@
+{
+  "name": "ng-file-input",
+  "authors": [
+    "shridharkaushik29 <shridharkaushik29@gmail.com>"
+  ],
+  "description": "A library for handling files in the browser for angularjs 1.x",
+  "main": "ng-file-input.js",
+  "keywords": [
+    "ng-file-input",
+    "file-input",
+    "files",
+    "angular-files"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}
