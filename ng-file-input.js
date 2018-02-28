@@ -6,27 +6,12 @@ angular.module("ngFileInput", [])
                 return {
                     replace: true,
                     require: "ngModel",
-                    restrict: "AEC",
-                    template: "<input type=\"file\">",
+                    restrict: "A",
                     link: function ($scope, element, attr, ngModel) {
-
-                        ngModel.$parsers.push(function (value) {
-                            if (value) {
-                                var files;
-                                if (attr.multiple !== undefined) {
-                                    files = value;
-                                } else {
-                                    files = value[0];
-                                }
-                                files = $files.mapInfo(files);
-                                return files;
-                            } else {
-                                return value;
-                            }
-                        });
-
-                        element.on('change', function () {
-                            ngModel.$setViewValue(this.files);
+                        element.on('click', function () {
+                            $files.choose().then(function (files) {
+                                ngModel.$setViewValue(files);
+                            })
                         })
                     }
                 }
@@ -39,18 +24,17 @@ angular.module("ngFileInput", [])
                 function ($q) {
                     var service = {};
 
-                    var input = angular.element("<input type=\"file\">");
-
-                    angular.element("body").append(input);
-
                     service.choose = function (config) {
                         var defer = $q.defer();
                         var options = _.merge(config, {});
+                        var input = angular.element("<input type=\"file\">");
+
+                        angular.element("body").append(input);
+
+                        input.hide();
 
                         if (options.multiple) {
                             input.attr('multiple', true);
-                        } else {
-                            input.removeAttr("multiple");
                         }
 
                         if (options.accept) {
@@ -61,11 +45,9 @@ angular.module("ngFileInput", [])
                                 accept = options.accept;
                             }
                             input.attr("accept", accept);
-                        } else {
-                            input.removeAttr("accept");
                         }
 
-                        input.hide().click();
+                        input.click();
 
                         input.one('change', function () {
                             var files;
@@ -76,6 +58,7 @@ angular.module("ngFileInput", [])
                             }
                             files = service.mapInfo(files);
                             defer.resolve(files);
+                            input.remove();
                         })
 
                         return defer.promise;
