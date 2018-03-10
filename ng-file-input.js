@@ -63,7 +63,8 @@ angular.module("ngFileInput", [])
                             }
                             files = service.mapInfo(files);
                             defer.resolve(files);
-                            input.remove();
+                            input.wrap('<form>').parent('form')[0].reset();
+                            input.unwrap();
                         })
 
                         input.click();
