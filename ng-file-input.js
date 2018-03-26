@@ -13,6 +13,8 @@ angular.module("ngFileInput", [])
                             if (attr.multiple !== undefined) {
                                 options.multiple = true;
                             }
+                            var accept = $scope.$eval(attr.accept);
+                            options.accept = accept;
                             $files.choose(options).then(function (files) {
                                 ngModel.$setViewValue(files);
                             })
