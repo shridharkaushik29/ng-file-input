@@ -15,9 +15,9 @@ Dependencies:
 <li>jQuery 3.3.1 or greater</li>
 <li>Lodash 4.17.5 or greater</li>
 
-Usage:
+</ul>
 
-In head:
+Usage:
 
 <pre>
 
