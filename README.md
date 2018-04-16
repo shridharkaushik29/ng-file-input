@@ -76,4 +76,4 @@ angular.module("myApp")
 
 </pre>
 
-<b>Note: The multiple and accept attribute is watched for changes, so yoiu can use any scope variable there.</b>
+<b>Note: The multiple and accept attribute are watched for changes, so you can use any scope variable there.</b>
