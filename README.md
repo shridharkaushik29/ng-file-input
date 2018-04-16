@@ -36,28 +36,6 @@ angular.module("myApp", ["ngFileInput"])
 
 </pre>
 
-<b>Using Directive:</b>
-
-<small>Single File</small>
-<pre>
-
-&lt;button file-input ng-model="file"></button>
-
-&lt;img ng-src="{{file.url}}">
-
-</pre>
-
-<small>Multiple Files</small>
-<pre>
-
-&lt;button file-input multiple="true" ng-model="files"></button>
-
-&lt;img ng-repeat="file in files" ng-src="{{file.url}}">
-
-</pre>
-
-<b>Note: The multiple attribute is watched for changes, so yoiu can use any scope variable there.</b>
-
 <b>Using Factory: </b>
 
 <pre>
@@ -77,3 +55,25 @@ angular.module("myApp")
       })
 
 </pre>
+
+<b>Using Directive:</b>
+
+<small>Single File</small>
+<pre>
+
+&lt;button file-input ng-model="file" accepts="['.jpg','.png']"></button>
+
+&lt;img ng-src="{{file.url}}">
+
+</pre>
+
+<small>Multiple Files</small>
+<pre>
+
+&lt;button file-input multiple="true" accepts="['.jpg','.png']" ng-model="files"></button>
+
+&lt;img ng-repeat="file in files" ng-src="{{file.url}}">
+
+</pre>
+
+<b>Note: The multiple and accept attribute is watched for changes, so yoiu can use any scope variable there.</b>
